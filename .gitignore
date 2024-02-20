@@ -1,10 +1,7 @@
 #experiment specific
 data/raw/*
 !data/raw/.gitkeep
-!data/metadata/*
-!data/metadata/.gitkeep
 !data/result/*
-!data/result/.gitkeep
 data/real/*
 !data/real/.gitkeep
 data/synthetic/*
@@ -13,8 +10,7 @@ logs/*
 !logs/.gitkeep
 pickles/SDGs/*
 !pickles/SDGs/.gitkeep
-pickles/pycaret_setup/*
-!pickles/pycaret_setup/.gitkeep
+!pickles/pycaret_setup/*
 pickles/models/*
 !pickles/models/.gitkeep
 notebooks/mlruns

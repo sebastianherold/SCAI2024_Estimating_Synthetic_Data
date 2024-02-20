@@ -1,0 +1,41 @@
+{
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1",
+    "primary_key": "PassengerId",
+    "columns": {
+        "PassengerId": {
+            "sdtype": "id",
+            "regex_format": "\\d+"
+        },
+        "Survived": {
+            "sdtype": "categorical"
+        },
+        "Pclass": {
+            "sdtype": "categorical"
+        },
+        "Sex": {
+            "sdtype": "categorical"
+        },
+        "Age": {
+            "sdtype": "numerical",
+            "computer_representation": "UInt8"
+        },
+        "SibSp": {
+            "sdtype": "numerical",
+            "computer_representation": "UInt8"
+        },
+        "Parch": {
+            "sdtype": "numerical",
+            "computer_representation": "UInt8"
+        },
+        "Fare": {
+            "sdtype": "numerical",
+            "computer_representation": "Float"
+        },
+        "Deck": {
+            "sdtype": "categorical"
+        },
+        "Embarked": {
+            "sdtype": "categorical"
+        }
+    }
+}
