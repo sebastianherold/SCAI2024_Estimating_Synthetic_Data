@@ -1,7 +1,4 @@
-# Master thesis: Measuring the Utility of Synthetic Data
-### An Empirical Evaluation of Population Fidelity Measures as Indicators of Synthetic Data Utility in Classification Tasks
-Alexander Florean
-
+# Estimating Synthetic Data
 ## Project structure
 ./  
 |- data/		   # data for the project   
@@ -10,7 +7,7 @@ Alexander Florean
 |- pickles/		   # saved python-objects such as SDG models  
 |- src/			   # source code, for help functions and computing PF    
 |- tests/		   # test function  
-|- Makefile		   # automization of tasks, has some issues in windows  
+|- Makefile		   # automization of tasks, has some issues in windows, need rework
 |- README.md	   # documentation file  
 |- config_experiment.yaml  # global settings for the experiment    
 |- requirements.yaml	   # all the packages used in the project  
