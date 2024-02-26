@@ -10,25 +10,14 @@
 |- Makefile		   # automization of tasks, has some issues in windows, need rework
 |- README.md	   # documentation file  
 |- config_experiment.yaml  # global settings for the experiment    
-|- requirements.yaml	   # all the packages used in the project  
 
 
 ## Pre-requesites
-- Anaconda3/miniconda3
+- poetry
+- python 3.9.13
 
 ### Install
-Run `make install` to create the environment and install all required packages.  
-However, the Makefile is somewhat unpredictable in windows, have yet time to fix this yet.  
-
-If using windows use the alternative,  
-run following commands in the shell:    
-
-```
-conda env create --name master --file requirements.yaml
-conda activate master
-python -m ipykernel install --user --name master --display-name "Python 3.9.16 (master)"
-```
-
+Run `poetry install` to dependencies.
 
 ### Experiment settings
 The file `./config/experiment_settings.yml` contains all the global settings for all runs of the experiment,  
