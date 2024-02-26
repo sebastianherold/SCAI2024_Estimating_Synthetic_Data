@@ -17,6 +17,8 @@ notebooks/mlruns
 mlruns/*
 Miniconda*
 .tmp*
+poetry.lock
+.python-version
 #mlflow
 .trash
 
