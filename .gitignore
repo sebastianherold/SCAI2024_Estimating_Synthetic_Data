@@ -1,8 +1,12 @@
 #experiment specific
-data/raw/*
+data/raw/
 !data/raw/.gitkeep
 !data/result/*
-data/real/*
+data/real/
+data/synthetic_ctgan_D305
+data/synthetic_tvae_D305
+data/TVAE_made_in_colab
+combined_sdg_loss.csv
 !data/real/.gitkeep
 data/synthetic/*
 !data/synthetic/.gitkeep

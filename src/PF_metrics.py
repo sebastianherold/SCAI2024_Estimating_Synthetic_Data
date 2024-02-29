@@ -109,7 +109,6 @@ def compute_propensity(
 
     # Extract probabilities for class 1 (synthetic) on X_test datapoints
     score =  classifier.predict_proba(X_test_transformed)[:, 1]
-    score = np.log(score/(1-score))
 
     return {"score": score, "no": n_o_test, "ns": n_s_test}
 
@@ -527,12 +526,12 @@ def CrossClassification_metric(
 
 
 ### Computes all metrics defined above
-def compute_all_pf_measures(
-    original_data: pd.DataFrame,
-    synthetic_data: pd.DataFrame,
-    custom_metadata: dict,     # custom metadata
-    sdv_metadata: dict,         # SDV metadata
-    SD_id: str,
+def compute_pf_measures(
+    original_data: pd.DataFrame
+    ,synthetic_data: pd.DataFrame
+    ,custom_metadata: dict     # custom metadata
+    ,sdv_metadata: dict         # SDV metadata
+    ,SD_id: str
 ) -> pd.DataFrame:
 
     # get number of clusters, using the original number of samples in the synthetic & original data,
@@ -553,60 +552,60 @@ def compute_all_pf_measures(
     measures["pMSE"] = result["score"]
     measures["pMSE_time"] = result["time"]
 
-    result = s_pmse(original_data=original_data, synthetic_data=synthetic_data, custom_metadata=custom_metadata)
-    measures["s_pMSE"] = result["score"]
-    measures["s_pMSE_time"] = result["time"]
+    #result = s_pmse(original_data=original_data, synthetic_data=synthetic_data, custom_metadata=custom_metadata)
+    #measures["s_pMSE"] = result["score"]
+    #measures["s_pMSE_time"] = result["time"]
 
-    for g in g_values:
-        result = cluster_metric(
-            original_data=original_data,
-            synthetic_data=synthetic_data,
-            num_clusters= g_values[g],
-            meta=custom_metadata
-        )
-        measures[f"Cluster_{g}"] = result["score"]
-        measures[f"Cluster_{g}_time"] = result["time"]
-        #logg
-        print(f"N_Clusters: {g_values[g]}")
-        print(f"Value: {result['score']}, Time: {result['time']}")
+    #for g in g_values:
+    #    result = cluster_metric(
+    #        original_data=original_data,
+    #        synthetic_data=synthetic_data,
+    #        num_clusters= g_values[g],
+    #        meta=custom_metadata
+    #    )
+    #    measures[f"Cluster_{g}"] = result["score"]
+    #    measures[f"Cluster_{g}_time"] = result["time"]
+    #    #logg
+    #    print(f"N_Clusters: {g_values[g]}")
+    #    print(f"Value: {result['score']}, Time: {result['time']}")
 
-    # quickfix for Sdmetrics, some issues arise from specifying dtypes e.g. 'category', 'UInt8', etc.
-    # Mainly for SDMetrics, HyperTransformer, in SDMetrics/sdmetrics/utils.py
-    # seen in git-branch: 7754f13
-    o_data = pd.read_csv(f"../data/real/{custom_metadata['filename']}")
-    s_data = pd.read_csv(f"../data/synthetic/{SD_id}.csv")
+    ## quickfix for Sdmetrics, some issues arise from specifying dtypes e.g. 'category', 'UInt8', etc.
+    ## Mainly for SDMetrics, HyperTransformer, in SDMetrics/sdmetrics/utils.py
+    ## seen in git-branch: 7754f13
+    #o_data = pd.read_csv(f"../data/real/{custom_metadata['filename']}")
+    #s_data = pd.read_csv(f"../data/synthetic/{SD_id}.csv")
 
-    result = BNLogLikelihood_metric(
-        original_data=o_data, synthetic_data=s_data, sdv_metadata=sdv_metadata
-    )
-    measures["BNLogLikelihood"] = result["score"]
-    measures["BNLogLikelihood_time"] = result["time"]
+    #result = BNLogLikelihood_metric(
+    #    original_data=o_data, synthetic_data=s_data, sdv_metadata=sdv_metadata
+    #)
+    #measures["BNLogLikelihood"] = result["score"]
+    #measures["BNLogLikelihood_time"] = result["time"]
 
-    result = GMLogLikelihood_metric(
-        original_data=o_data, synthetic_data=s_data, sdv_metadata=sdv_metadata
-    )
-    measures["GMLogLikelihood"] = result["score"]
-    measures["GMLogLikelihood_time"] = result["time"]
+    #result = GMLogLikelihood_metric(
+    #    original_data=o_data, synthetic_data=s_data, sdv_metadata=sdv_metadata
+    #)
+    #measures["GMLogLikelihood"] = result["score"]
+    #measures["GMLogLikelihood_time"] = result["time"]
 
-    result = ContinousKLDivergence_metric(o_data, s_data, sdv_metadata)
-    measures["ContinousKLDivergence"] = result["score"]
-    measures["ContinousKLDivergence_time"] = result["time"]
+    #result = ContinousKLDivergence_metric(o_data, s_data, sdv_metadata)
+    #measures["ContinousKLDivergence"] = result["score"]
+    #measures["ContinousKLDivergence_time"] = result["time"]
 
-    result = DiscreteKLDivergence_metric(o_data, s_data, sdv_metadata)
-    measures["DiscreteKLDivergence"] = result["score"]
-    measures["DiscreteKLDivergence_time"] = result["time"]
+    #result = DiscreteKLDivergence_metric(o_data, s_data, sdv_metadata)
+    #measures["DiscreteKLDivergence"] = result["score"]
+    #measures["DiscreteKLDivergence_time"] = result["time"]
 
-    result = KSComplement_metric(o_data, s_data, sdv_metadata)
-    measures["KSComplement"] = result["score"]
-    measures["KSComplement_time"] = result["time"]
+    #result = KSComplement_metric(o_data, s_data, sdv_metadata)
+    #measures["KSComplement"] = result["score"]
+    #measures["KSComplement_time"] = result["time"]
 
-    result = CSTest_metric(o_data, s_data, sdv_metadata)
-    measures["CSTest"] = result["score"]
-    measures["CSTest_time"] = result["time"]
+    #result = CSTest_metric(o_data, s_data, sdv_metadata)
+    #measures["CSTest"] = result["score"]
+    #measures["CSTest_time"] = result["time"]
 
-    result = CrossClassification_metric(o_data, s_data, dataset_metadata=custom_metadata, sdv_metadata=sdv_metadata)
-    measures["CrCl"] = result["score"]
-    measures["CrCl_time"] = result["time"]
+    #result = CrossClassification_metric(o_data, s_data, dataset_metadata=custom_metadata, sdv_metadata=sdv_metadata)
+    #measures["CrCl"] = result["score"]
+    #measures["CrCl_time"] = result["time"]
 
     results_df = pd.DataFrame(data=measures, index=[0])
     return results_df
