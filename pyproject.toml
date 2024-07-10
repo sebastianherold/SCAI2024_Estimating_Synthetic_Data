@@ -6,7 +6,7 @@ authors = ["Alexander Florean <alexander.florean@cgi.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.9.13"
+python = "3.9.18"
 kaleido = "0.2.1"
 pycaret = {version = "3.0.0", extras = ["tuners"]}
 sdv = "1.0.0"
