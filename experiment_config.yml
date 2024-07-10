@@ -57,8 +57,8 @@ clf:    # Settings for classification modelling
         #n_iter: 100             # (do not use when early_stopping is used) Number of iterations to run the tune_model, i.e. n_iter paramter
         optimize: 'Accuracy'   # (when using cuml, only have currently accuracy) The target metric to optimize against
         choose_better: True
-        search_library: 'optuna'
-        search_algorithm: 'tpe'
+        search_library: 'scikit-learn'
+        search_algorithm: 'random'
         early_stopping: 'Median'  # median stopping rule
         early_stopping_max_iters: 200 # Default=10, maximum of different candidates to try
 
@@ -218,11 +218,11 @@ tvae_param:
 #                       - item2
 #                       - item3
 run_dataset: 
-  - 'D0'   # diabetes (~750 samples)
-  - 'D1'   # titanic  (~800 samples)
-  - 'D205'  # bank      (5% of 45 211 samples = 2260 )
-  - 'D305' # mnist     (5% of 70 000 samples = 3500)
-  - 'D405' # adult
+  - 'D00'   # whether classification
+  #- 'D1'   # titanic  (~800 samples)
+  #- 'D205'  # bank      (5% of 45 211 samples = 2260 )
+  #- 'D305' # mnist     (5% of 70 000 samples = 3500)
+  #- 'D405' # adult
   #- 'D2'   #broken  # bank     (45 211 samples)
   #- 'D3'   #brodken # mnist    (70 000 samples)
 ...
