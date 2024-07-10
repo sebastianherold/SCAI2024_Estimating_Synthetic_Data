@@ -1,5 +1,4 @@
 #experiment specific
-data/raw/
 !data/raw/.gitkeep
 !data/result/*
 data/real/
