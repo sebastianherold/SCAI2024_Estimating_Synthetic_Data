@@ -29,9 +29,10 @@ def getPicklesFromDir(path: str) -> list[dict]:
 
     for dirname, _, filenames in os.walk(path):
         for filename in filenames:
-            folder = os.path.join(dirname, filename)
-            pickle_obj = cloudpickle.load(open(folder, "rb"))
-            pickles.append(pickle_obj)
+            if (filename.endswith(".pkl")):
+                folder = os.path.join(dirname, filename)
+                pickle_obj = cloudpickle.load(open(folder, "rb"))
+                pickles.append(pickle_obj)
 
     return pickles
 
