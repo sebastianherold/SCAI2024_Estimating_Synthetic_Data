@@ -1,0 +1,38 @@
+{
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1",
+    "columns": {
+        "Temperature": {
+            "sdtype": "numerical"
+        },
+        "Humidity": {
+            "sdtype": "numerical"
+        },
+        "Wind Speed": {
+            "sdtype": "numerical"
+        },
+        "Precipitation (%)": {
+            "sdtype": "numerical"
+        },
+        "Cloud Cover": {
+            "sdtype": "categorical"
+        },
+        "Atmospheric Pressure": {
+            "sdtype": "numerical"
+        },
+        "UV Index": {
+            "sdtype": "numerical"
+        },
+        "Season": {
+            "sdtype": "categorical"
+        },
+        "Visibility (km)": {
+            "sdtype": "numerical"
+        },
+        "Location": {
+            "sdtype": "categorical"
+        },
+        "Weather Type": {
+            "sdtype": "categorical"
+        }
+    }
+}
