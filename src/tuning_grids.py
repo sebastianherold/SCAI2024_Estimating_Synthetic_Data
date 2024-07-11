@@ -107,13 +107,13 @@ class Grids:
     @staticmethod
     def svm_sklearn_grid():
         return {
-            'C': np.logspace(-4, 4, 20).tolist(),
+            'C': np.logspace(-4, 4, 10).tolist(),
             'kernel': ['poly', 'sigmoid', 'rbf'],
-            'degree': [2, 3, 4, 5, 6],
+            'degree': [2, 3, 4, 5],
             'gamma': ['scale', 'auto'],
-            'coef0': [0.0, 0.1, 0.25, 0.5, 0,75, 1.0],
-            'shrinking': [True, False],
-            'max_iter': [100000, 100000]
+            'coef0': [0.0, 0.25, 0.5, 0,75, 1.0],
+            'shrinking': [True, False] #,
+            #'max_iter': [100000, 100000]
         }
 
     # For sklearn
