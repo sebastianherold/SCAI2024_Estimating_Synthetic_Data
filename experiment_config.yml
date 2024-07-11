@@ -54,13 +54,13 @@ clf:    # Settings for classification modelling
                 ]   
     # The default tuning grids of pycaret can be found in https://github.com/pycaret/pycaret/blob/master/pycaret/containers/models/classification.py
     tuning_param:  
-        #n_iter: 100             # (do not use when early_stopping is used) Number of iterations to run the tune_model, i.e. n_iter paramter
+        n_iter: 100             # (do not use when early_stopping is used) Number of iterations to run the tune_model, i.e. n_iter paramter
         optimize: 'Accuracy'   # (when using cuml, only have currently accuracy) The target metric to optimize against
         choose_better: True
         search_library: 'scikit-learn'
         search_algorithm: 'random'
-        early_stopping: 'Median'  # median stopping rule
-        early_stopping_max_iters: 200 # Default=10, maximum of different candidates to try
+        #early_stopping: 'Median'  # median stopping rule
+        #early_stopping_max_iters: 20 # Default=10, maximum of different candidates to try
 
 
 # CTGAN hyperparameters
@@ -109,15 +109,15 @@ ctgan_param:
     #        the numerical transformer, ``FloatFormatter``, to the min and max values seen
     #        during ``fit``. Defaults to ``True``.
     quality_params:     # list of parameters set to generate synthetic data of varying qualities
-        #Q10:
-        #  epochs: 10
-        #  batch_size: 50
-        #  pac: 10
-        #  discriminator_steps: 2
-        #  generator_lr: 0.00001
-        #  discriminator_lr: 0.00001
-        #  verbose: true #required (for capturing loss values)
-        #  cuda: true
+        Q10:
+          epochs: 10
+          batch_size: 50
+          pac: 10
+          discriminator_steps: 2
+          generator_lr: 0.00001
+          discriminator_lr: 0.00001
+          verbose: true #required (for capturing loss values)
+          cuda: true
         #Q100:
         #  epochs: 100
         #  batch_size: 50
@@ -145,15 +145,15 @@ ctgan_param:
         #  discriminator_lr: 0.00001
         #  verbose: true #required (for capturing loss values)
         #  cuda: true
-        Q1500:
-          epochs: 1500
-          batch_size: 50
-          pac: 10
-          discriminator_steps: 2
-          generator_lr: 0.00001
-          discriminator_lr: 0.00001
-          verbose: true #required (for capturing loss values)
-          cuda: true
+        #Q1500:
+        #  epochs: 1500
+        #  batch_size: 50
+        #  pac: 10
+        #  discriminator_steps: 2
+        #  generator_lr: 0.00001
+        #  discriminator_lr: 0.00001
+        #  verbose: true #required (for capturing loss values)
+        #  cuda: true
     # how many samples to generate by factor the sample size of the original dataset
     sd_size_factor: 1   
     num_sd: 10  # 10 how many copies of SDG and synthetic datasets to create for each setting 
