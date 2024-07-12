@@ -21,7 +21,7 @@ def create_preprocessing_pipeline(meta):
         #ensure there are no duplicates
         categorical_columns = list(set(meta['categorical_features']))
         categorical_transformer = Pipeline([
-            ('onehot', OneHotEncoder(handle_unknown='ignore', sparse=False))
+            ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
         ])
         list_of_columntransformers.append( ('cat', categorical_transformer, categorical_columns) )
 
